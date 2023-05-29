@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Knife : MonoBehaviour
 {
-    private Rigidbody2D _rb;
+    private Rigidbody2D _rigidbody2D;
     
     [SerializeField]private GameObject enemySpawner;
     private EnemySpawner _enemySpawner;
@@ -16,13 +16,13 @@ public class Knife : MonoBehaviour
     {
         _enemySpawner = enemySpawner.GetComponent<EnemySpawner>();
 
-        _rb = GetComponent<Rigidbody2D>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        _rb.velocity = Vector2.zero; // Останавливаем движение ножа
-        _rb.isKinematic = true; // Отключаем физику после столкновения
+        _rigidbody2D.velocity = Vector2.zero; // Останавливаем движение ножа
+        _rigidbody2D.isKinematic = true; // Отключаем физику после столкновения
         transform.SetParent(collision.collider.transform); // Делаем столкнувшийся объект родительским для ножа
         
         HitChecker(collision);
