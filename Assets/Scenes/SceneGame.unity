@@ -929,7 +929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebf5448e77bc5b04b8a8cd01eaa89ac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KnifePrefab: {fileID: 3706450482459720377, guid: 90ffb43f297f2cf448c6bfa07b965da7, type: 3}
+  knifePrefab: {fileID: 3706450482459720377, guid: 90ffb43f297f2cf448c6bfa07b965da7, type: 3}
 --- !u!4 &1414475682
 Transform:
   m_ObjectHideFlags: 0
