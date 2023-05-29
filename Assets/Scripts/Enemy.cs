@@ -26,14 +26,14 @@ public class Enemy : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        KnifeThrower.currentScoreKnife -= 1;
+        KnifeThrower.CurrentScoreKnife -= 1;
         
-        if (KnifeThrower.currentScoreKnife == 0)
+        if (KnifeThrower.CurrentScoreKnife == 0)
         {
             _enemySpawner.lvl++;
             Destroy(enemy);
             _enemySpawner.Spawn();
-            KnifeThrower.currentScoreKnife = 5;
+            KnifeThrower.CurrentScoreKnife = 5;
         }
     }
 }

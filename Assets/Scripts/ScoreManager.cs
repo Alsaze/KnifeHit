@@ -10,6 +10,6 @@
 
         private void Update()
         {
-            scoreText.text = Convert.ToString(Knife.currentScore);
+            scoreText.text = Convert.ToString(Knife.CurrentScore);
         }
     }

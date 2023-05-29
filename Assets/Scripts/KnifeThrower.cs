@@ -1,26 +1,27 @@
 using System;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class KnifeThrower : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    [SerializeField] private GameObject KnifePrefab;
+    private Rigidbody2D _rigidbody2D;
+    [SerializeField] private GameObject knifePrefab;
 
-    public static int currentScoreKnife = 5;
+    public static int CurrentScoreKnife = 5;
 
     private void DefaultKnifePosotion()
     {
         float knifePositionY = -3.5f;
-        KnifePrefab.transform.position = new Vector3(0, knifePositionY, 0);
+        knifePrefab.transform.position = new Vector3(0, knifePositionY, 0);
     }
 
     private void SpawnKnife()
     {
-        if (currentScoreKnife>0)
+        if (CurrentScoreKnife>0)
         {
-            GameObject newKnife = Instantiate(KnifePrefab, KnifePrefab.transform.position, quaternion.identity);
-            rb = newKnife.GetComponent<Rigidbody2D>();   
+            GameObject newKnife = Instantiate(knifePrefab, knifePrefab.transform.position, quaternion.identity);
+            _rigidbody2D = newKnife.GetComponent<Rigidbody2D>();   
         }
     }
 
@@ -31,7 +32,6 @@ public class KnifeThrower : MonoBehaviour
 
     public void ButtonHit()
     {
-        Debug.Log("Button Hit");
         SpawnKnife();
         ThrowKnife();
     }
@@ -48,7 +48,7 @@ public class KnifeThrower : MonoBehaviour
     {
         float throwForce = 15f;
         Vector2 direction = new Vector2(0, 1); // направление броска
-        rb.AddForce(direction * throwForce, ForceMode2D.Impulse); // применить силу броска к Rigidbody
+        _rigidbody2D.AddForce(direction * throwForce, ForceMode2D.Impulse); // применить силу броска к Rigidbody
     }
 
     private void Update()

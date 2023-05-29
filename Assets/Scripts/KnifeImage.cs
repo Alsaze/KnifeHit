@@ -8,12 +8,12 @@ public class KnifeImage : MonoBehaviour
 
     private void Update()
     {
-        if (KnifeThrower.currentScoreKnife <= 4 && KnifeThrower.currentScoreKnife >= 0)
+        if (KnifeThrower.CurrentScoreKnife <= 4 && KnifeThrower.CurrentScoreKnife >= 0)
         {
-            knifeImage[KnifeThrower.currentScoreKnife].GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.5f);
+            knifeImage[KnifeThrower.CurrentScoreKnife].GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.5f);
         }
 
-        if (KnifeThrower.currentScoreKnife == 5)
+        if (KnifeThrower.CurrentScoreKnife == 5)
         {
             foreach (var knife in knifeImage)
             { 

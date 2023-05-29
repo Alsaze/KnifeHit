@@ -6,23 +6,23 @@ using UnityEngine.UI;
 
 public class Knife : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    private Rigidbody2D _rb;
     
     [SerializeField]private GameObject enemySpawner;
     private EnemySpawner _enemySpawner;
 
-    public static int currentScore;
+    public static int CurrentScore;
     private void Start()
     {
         _enemySpawner = enemySpawner.GetComponent<EnemySpawner>();
 
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        rb.velocity = Vector2.zero; // Останавливаем движение ножа
-        rb.isKinematic = true; // Отключаем физику после столкновения
+        _rb.velocity = Vector2.zero; // Останавливаем движение ножа
+        _rb.isKinematic = true; // Отключаем физику после столкновения
         transform.SetParent(collision.collider.transform); // Делаем столкнувшийся объект родительским для ножа
         
         HitChecker(collision);
@@ -32,14 +32,14 @@ public class Knife : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            currentScore++;
+            CurrentScore++;
         }
 
         if (collision.gameObject.tag=="Knife")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            KnifeThrower.currentScoreKnife = 5;
-            currentScore = 0;
+            KnifeThrower.CurrentScoreKnife = 5;
+            CurrentScore = 0;
             _enemySpawner.lvl = 0;
         }   
     }
